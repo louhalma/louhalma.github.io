@@ -86,17 +86,17 @@ a {
 }
 
 .name {
-  font-size: clamp(1.7rem, 2.8vw, 2.6rem);
+  font-size: 48px;
   font-weight: 600;
-  letter-spacing: -.04em;
+  letter-spacing: -0.05em;
 }
 
 .name::after {
   content: "";
   display: block;
-  width: 32px;
+  width: 38px;
   height: 1px;
-  margin-top: 8px;
+  margin-top: 10px;
   background: var(--white);
   opacity: .8;
 }
