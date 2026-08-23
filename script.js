@@ -1,10 +1,13 @@
-// Small, deliberately subtle motion for the cinematic homepage.
+const followButton = document.getElementById("followButton");
 const followMenu = document.querySelector(".follow-menu");
-const followButton = document.querySelector("#followButton");
 
 followButton.addEventListener("click", () => {
   const isOpen = followMenu.classList.toggle("open");
-  followButton.setAttribute("aria-expanded", isOpen);
+
+  followButton.setAttribute(
+    "aria-expanded",
+    isOpen ? "true" : "false"
+  );
 });
 
 if (hero && bg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
