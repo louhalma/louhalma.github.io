@@ -94,7 +94,7 @@ a {
 .name::after {
   content: "";
   display: block;
-  width: 38px;
+  width: 40px;
   height: 1px;
   margin-top: 10px;
   background: var(--white);
