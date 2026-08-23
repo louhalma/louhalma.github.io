@@ -151,7 +151,7 @@ a {
   width: 42px;
   height: 150px;
 
-  transform: translateY(-50%) rotate(180deg);
+  transform: translateY(-50%);
 
   border: none;
 
@@ -200,8 +200,7 @@ a {
 .follow-menu.open .follow-button {
   transform:
     translateX(135px)
-    translateY(-50%)
-    rotate(180deg);
+    translateY(-50%);
 }
 
 
