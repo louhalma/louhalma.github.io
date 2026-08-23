@@ -124,16 +124,13 @@ a {
   position: absolute;
 
   left: 27px;
-  top: 35%;
+  top: 50%;
 
   transform: translateY(-50%);
 
   z-index: 20;
 
-  display: flex;
-  align-items: center;
-
-  width: 135px;
+  width: 177px;
   height: 190px;
 }
 
@@ -155,6 +152,7 @@ a {
 
   border: none;
 
+  /* côté gauche plat / côté droit arrondi */
   border-radius: 0 24px 24px 0;
 
   background: rgba(255,255,255,.95);
@@ -164,7 +162,9 @@ a {
   cursor: pointer;
 
   font-family: "DM Mono", monospace;
+
   font-size: 11px;
+
   letter-spacing: .16em;
 
   writing-mode: vertical-rl;
@@ -174,7 +174,7 @@ a {
   z-index: 3;
 
   transition:
-    transform .45s cubic-bezier(.22,.61,.36,1),
+    left .45s cubic-bezier(.22,.61,.36,1),
     background .3s ease;
 }
 
@@ -183,16 +183,14 @@ a {
 }
 
 
-/*
-   Quand le menu est ouvert :
-
-   Le panneau fait 135px de large.
-   Le bouton se déplace donc de 135px
-   afin de venir exactement à droite du panneau.
-*/
+/* =========================================================
+   BOUTON QUAND LE MENU EST OUVERT
+========================================================= */
 
 .follow-menu.open .follow-button {
-  transform: translate(135px, -50%);
+  left: 135px;
+
+  transform: translateY(-50%);
 }
 
 
@@ -207,11 +205,11 @@ a {
   top: 50%;
 
   width: 0;
-  height: 190px;
-
-  overflow: hidden;
+  height: 150px;
 
   padding: 0;
+
+  overflow: hidden;
 
   display: flex;
 
@@ -223,20 +221,21 @@ a {
 
   gap: 16px;
 
-  background: #f5f3ef;
+  /* exactement le même blanc que FOLLOW */
+  background: rgba(255,255,255,.95);
 
   /*
-    Le côté gauche est plat.
-    Les deux coins de droite sont arrondis.
+    IMPORTANT :
+    aucun arrondi du côté qui rejoint FOLLOW.
   */
-  border-radius: 0 38px 38px 0;
+  border-radius: 24px 0 0 24px;
 
   opacity: 0;
 
   visibility: hidden;
 
   transform:
-    translateX(-25px)
+    translateX(-10px)
     translateY(-50%);
 
   pointer-events: none;
@@ -245,14 +244,14 @@ a {
 
   transition:
     width .45s cubic-bezier(.22,.61,.36,1),
-    opacity .3s ease,
+    opacity .25s ease,
     transform .45s cubic-bezier(.22,.61,.36,1),
-    visibility .3s ease;
+    visibility .25s ease;
 }
 
 
 /* =========================================================
-   MENU OUVERT
+   RÉSEAUX OUVERTS
 ========================================================= */
 
 .follow-menu.open .socials {
@@ -279,23 +278,19 @@ a {
   height: 30px;
 
   display: grid;
+
   place-items: center;
 
   color: #111;
 
   opacity: 0;
 
-  transform: translateX(-15px);
+  transform: translateX(-10px);
 
   transition:
     opacity .25s ease,
-    transform .3s ease;
+    transform .25s ease;
 }
-
-
-/*
-   Apparition des logos
-*/
 
 .follow-menu.open .socials a {
   opacity: 1;
@@ -304,9 +299,7 @@ a {
 }
 
 
-/*
-   Apparition progressive
-*/
+/* apparition progressive */
 
 .follow-menu.open .socials a:nth-child(1) {
   transition-delay: .05s;
@@ -383,22 +376,17 @@ a {
   line-height: 1;
 }
 
-
 /* =========================================================
    MADE / MAKING / ME
 ========================================================= */
 
 .home-links {
   width: min(640px, calc(100vw - 110px));
-
   margin-left: 58px;
-
   margin-top: 80px;
 
   display: flex;
-
   flex-direction: column;
-
   gap: 18px;
 }
 
@@ -408,9 +396,7 @@ a {
   border: 1px solid var(--line);
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   position: relative;
@@ -427,9 +413,7 @@ a {
 
 .home-card span {
   font-size: clamp(1.1rem, 2.2vw, 1.65rem);
-
   letter-spacing: .14em;
-
   font-weight: 600;
 }
 
@@ -448,7 +432,6 @@ a {
 
 .home-card:hover {
   background: rgba(255,255,255,.12);
-
   transform: translateY(-3px);
 }
 
@@ -750,49 +733,62 @@ footer {
   }
 
 
-  /* -------------------------------------------------------
-     FOLLOW
-  ------------------------------------------------------- */
+/* -------------------------------------------------------
+   FOLLOW MOBILE
+------------------------------------------------------- */
 
-  .follow-menu {
-    left: 0;
+.follow-menu {
+  left: 0;
+  top: 57%;
 
-    top: 57%;
+  width: 150px;
+  height: 190px;
+}
 
-    width: 135px;
+.follow-button {
+  width: 58px;
+  height: 150px;
 
-    height: 190px;
-  }
+  border-radius: 0 30px 30px 0;
 
+  font-size: 10px;
+}
 
-  /* -------------------------------------------------------
-     BOUTON FOLLOW
-  ------------------------------------------------------- */
+.follow-menu.open .follow-button {
+  left: 115px;
 
-  .follow-button {
-    width: 78px;
+  transform: translateY(-50%);
+}
 
-    height: 190px;
+.socials {
+  width: 0;
+  height: 150px;
 
-    border-radius: 0 38px 38px 0;
+  gap: 14px;
 
-    font-size: 11px;
+  border-radius: 24px 0 0 24px;
+}
 
-    letter-spacing: .17em;
-  }
+.follow-menu.open .socials {
+  width: 115px;
+}
 
+.socials a {
+  width: 27px;
+  height: 27px;
+}
 
-  /*
-     Sur téléphone :
-     le bouton part complètement
-     à droite du panneau.
-  */
+.socials svg {
+  width: 22px;
+  height: 22px;
+}
 
-  .follow-menu.open .follow-button {
-    transform:
-      translateX(135px)
-      translateY(-50%);
-  }
+.socials .linkedin span {
+  width: 21px;
+  height: 21px;
+
+  font-size: 12px;
+}
 
 
   /* -------------------------------------------------------
