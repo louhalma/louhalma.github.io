@@ -155,10 +155,6 @@ a {
 
   border: none;
 
-  /*
-    Côté gauche = plat
-    Côté droit = arrondi
-  */
   border-radius: 0 24px 24px 0;
 
   background: rgba(255,255,255,.95);
@@ -168,9 +164,7 @@ a {
   cursor: pointer;
 
   font-family: "DM Mono", monospace;
-
   font-size: 11px;
-
   letter-spacing: .16em;
 
   writing-mode: vertical-rl;
@@ -198,9 +192,7 @@ a {
 */
 
 .follow-menu.open .follow-button {
-  transform:
-    translateX(135px)
-    translateY(-50%);
+  transform: translate(135px, -50%);
 }
 
 
