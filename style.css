@@ -86,7 +86,7 @@ a {
 }
 
 .name {
-  font-size: 55px;
+  font-size: 65px;
   font-weight: 600;
   letter-spacing: -0.05em;
 }
@@ -94,7 +94,7 @@ a {
 .name::after {
   content: "";
   display: block;
-  width: 45px;
+  width: 55px;
   height: 1px;
   margin-top: 10px;
   background: var(--white);
