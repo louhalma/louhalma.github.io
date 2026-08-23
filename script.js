@@ -4,10 +4,7 @@ const followMenu = document.querySelector(".follow-menu");
 followButton.addEventListener("click", () => {
   const isOpen = followMenu.classList.toggle("open");
 
-  followButton.setAttribute(
-    "aria-expanded",
-    isOpen ? "true" : "false"
-  );
+  followButton.setAttribute("aria-expanded", isOpen);
 });
 
 if (hero && bg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
