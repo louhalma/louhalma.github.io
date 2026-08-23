@@ -109,7 +109,7 @@ a {
 .socials {
   position: absolute;
   left: 27px;
-  top: 27%;
+  top: 23%;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
@@ -165,7 +165,7 @@ a {
 .home-links {
   width: min(640px, calc(100vw - 110px));
   margin-left: 58px;
-  margin-top: 100px;
+  margin-top: 130px;
   display: flex;
   flex-direction: column;
   gap: 18px;
