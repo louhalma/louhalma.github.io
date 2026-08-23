@@ -109,11 +109,11 @@ a {
 .socials {
   position: absolute;
   left: 27px;
-  top: 43%;
+  top: 32%;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
   z-index: 4;
 }
 
@@ -165,7 +165,7 @@ a {
 .home-links {
   width: min(640px, calc(100vw - 110px));
   margin-left: 58px;
-  margin-top: 80px;
+  margin-top: 120px;
   display: flex;
   flex-direction: column;
   gap: 18px;
