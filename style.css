@@ -121,17 +121,20 @@ a {
 ========================================================= */
 
 .follow-menu {
-  position: fixed;
+  position: absolute;
 
-  left: 0;
+  left: 27px;
   top: 50%;
 
   transform: translateY(-50%);
 
-  z-index: 50;
+  z-index: 20;
 
   display: flex;
   align-items: center;
+
+  width: 135px;
+  height: 190px;
 }
 
 
@@ -140,50 +143,65 @@ a {
 ========================================================= */
 
 .follow-button {
-  position: relative;
-  z-index: 3;
+  position: absolute;
 
-  width: 78px;
-  height: 190px;
+  left: 0;
+  top: 50%;
 
-  padding: 0;
+  width: 42px;
+  height: 150px;
+
+  transform: translateY(-50%) rotate(180deg);
 
   border: none;
 
   /*
-     IMPORTANT :
-     gauche = totalement droit
-     droite = arrondie
+    Côté gauche = plat
+    Côté droit = arrondi
   */
-  border-radius: 0 38px 38px 0;
+  border-radius: 0 24px 24px 0;
 
-  background: rgba(255,255,255,.96);
+  background: rgba(255,255,255,.95);
 
   color: #111;
 
   cursor: pointer;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   font-family: "DM Mono", monospace;
 
   font-size: 11px;
-  font-weight: 400;
 
-  letter-spacing: .18em;
+  letter-spacing: .16em;
 
   writing-mode: vertical-rl;
-  text-orientation: mixed;
+
+  flex-shrink: 0;
+
+  z-index: 3;
 
   transition:
-    background .3s ease,
-    width .35s ease;
+    transform .45s cubic-bezier(.22,.61,.36,1),
+    background .3s ease;
 }
 
 .follow-button:hover {
   background: #fff;
+}
+
+
+/*
+   Quand le menu est ouvert :
+
+   Le panneau fait 135px de large.
+   Le bouton se déplace donc de 135px
+   afin de venir exactement à droite du panneau.
+*/
+
+.follow-menu.open .follow-button {
+  transform:
+    translateX(135px)
+    translateY(-50%)
+    rotate(180deg);
 }
 
 
@@ -195,7 +213,7 @@ a {
   position: absolute;
 
   left: 0;
-  top: 0;
+  top: 50%;
 
   width: 0;
   height: 190px;
@@ -205,30 +223,40 @@ a {
   padding: 0;
 
   display: flex;
+
   flex-direction: column;
 
   align-items: center;
+
   justify-content: center;
 
   gap: 16px;
 
   background: #f5f3ef;
 
+  /*
+    Le côté gauche est plat.
+    Les deux coins de droite sont arrondis.
+  */
   border-radius: 0 38px 38px 0;
 
   opacity: 0;
 
   visibility: hidden;
 
-  transform: translateX(-20px);
+  transform:
+    translateX(-25px)
+    translateY(-50%);
 
   pointer-events: none;
 
+  z-index: 2;
+
   transition:
-    width .4s cubic-bezier(.22,.61,.36,1),
-    opacity .25s ease,
-    transform .4s cubic-bezier(.22,.61,.36,1),
-    visibility .25s ease;
+    width .45s cubic-bezier(.22,.61,.36,1),
+    opacity .3s ease,
+    transform .45s cubic-bezier(.22,.61,.36,1),
+    visibility .3s ease;
 }
 
 
@@ -243,19 +271,11 @@ a {
 
   visibility: visible;
 
-  transform: translateX(0);
+  transform:
+    translateX(0)
+    translateY(-50%);
 
   pointer-events: auto;
-}
-
-
-/*
-   Quand le menu est ouvert,
-   le bouton reste visible au-dessus.
-*/
-
-.follow-menu.open .follow-button {
-  background: #f5f3ef;
 }
 
 
@@ -274,20 +294,28 @@ a {
 
   opacity: 0;
 
-  transform: translateX(-12px);
+  transform: translateX(-15px);
 
   transition:
     opacity .25s ease,
-    transform .25s ease;
+    transform .3s ease;
 }
 
 
-/* apparition progressive */
+/*
+   Apparition des logos
+*/
 
 .follow-menu.open .socials a {
   opacity: 1;
+
   transform: translateX(0);
 }
+
+
+/*
+   Apparition progressive
+*/
 
 .follow-menu.open .socials a:nth-child(1) {
   transition-delay: .05s;
@@ -312,6 +340,7 @@ a {
 
 .socials a:hover {
   transform: scale(1.12);
+
   opacity: .6;
 }
 
@@ -333,6 +362,7 @@ a {
 
 .socials svg .fill {
   fill: currentColor;
+
   stroke: none;
 }
 
@@ -350,6 +380,7 @@ a {
   border-radius: 2px;
 
   display: grid;
+
   place-items: center;
 
   font-family: Arial, sans-serif;
@@ -370,9 +401,11 @@ a {
   width: min(640px, calc(100vw - 110px));
 
   margin-left: 58px;
+
   margin-top: 80px;
 
   display: flex;
+
   flex-direction: column;
 
   gap: 18px;
@@ -384,7 +417,9 @@ a {
   border: 1px solid var(--line);
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   position: relative;
@@ -719,6 +754,7 @@ footer {
 
   .topbar {
     left: 20px;
+
     top: 20px;
   }
 
@@ -730,15 +766,21 @@ footer {
   .follow-menu {
     left: 0;
 
-    /*
-       Placement verticale proche
-       de ta référence Jennie.
-    */
     top: 57%;
+
+    width: 135px;
+
+    height: 190px;
   }
+
+
+  /* -------------------------------------------------------
+     BOUTON FOLLOW
+  ------------------------------------------------------- */
 
   .follow-button {
     width: 78px;
+
     height: 190px;
 
     border-radius: 0 38px 38px 0;
@@ -748,13 +790,23 @@ footer {
     letter-spacing: .17em;
   }
 
-  .follow-button:hover {
-    width: 78px;
+
+  /*
+     Sur téléphone :
+     le bouton part complètement
+     à droite du panneau.
+  */
+
+  .follow-menu.open .follow-button {
+    transform:
+      translateX(135px)
+      translateY(-50%)
+      rotate(180deg);
   }
 
 
   /* -------------------------------------------------------
-     RÉSEAUX
+     PANNEAU RÉSEAUX
   ------------------------------------------------------- */
 
   .socials {
@@ -767,24 +819,41 @@ footer {
     padding: 0;
 
     border-radius: 0 38px 38px 0;
+
+    transform:
+      translateX(-20px)
+      translateY(-50%);
   }
+
 
   .follow-menu.open .socials {
     width: 135px;
+
+    transform:
+      translateX(0)
+      translateY(-50%);
   }
+
+
+  /* -------------------------------------------------------
+     ICÔNES
+  ------------------------------------------------------- */
 
   .socials a {
     width: 28px;
+
     height: 28px;
   }
 
   .socials svg {
     width: 24px;
+
     height: 24px;
   }
 
   .socials .linkedin span {
     width: 22px;
+
     height: 22px;
 
     font-size: 13px;
@@ -800,10 +869,6 @@ footer {
 
     margin-left: 42px;
 
-    /*
-       On descend davantage les cases
-       sur téléphone.
-    */
     margin-top: 150px;
 
     gap: 12px;
@@ -887,16 +952,32 @@ footer {
 
 @media (max-width: 390px) {
 
+  .follow-menu {
+    width: 120px;
+  }
+
+
   .follow-button {
     width: 68px;
+
     height: 175px;
 
     border-radius: 0 34px 34px 0;
   }
 
+
+  .follow-menu.open .follow-button {
+    transform:
+      translateX(120px)
+      translateY(-50%)
+      rotate(180deg);
+  }
+
+
   .follow-menu.open .socials {
     width: 120px;
   }
+
 
   .socials {
     height: 175px;
@@ -905,6 +986,7 @@ footer {
 
     gap: 12px;
   }
+
 
   .home-links {
     width: calc(100vw - 68px);
